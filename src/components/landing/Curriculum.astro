@@ -1,3 +1,5 @@
+
+
 <section class="border-white/20 border-b">
     <div class="mx-auto border-white/20 border-x max-w-7xl gradient-grid">
       <div class="mx-auto max-w-7xl p-8 py-12 lg:pt-28">
@@ -19,13 +21,45 @@
       </div>
       
       <div class="mx-auto max-w-7xl p-8">
-        <div class="aspect-video w-full overflow-hidden rounded-lg bg-black/20">
-          <iframe
-            class="w-full h-full object-cover transition-opacity duration-300"
-            src="CV/CV.pdf"
-            loading="lazy"
-          ></iframe>
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col gap-4 justify-center">
+            <button
+            class="w-full bg-orange duration-200 font-display hover:bg-blacktext-white lg:w-auto px-6 py-4 sm:rounded-full text-black hover:text-white text-center text-xs uppercase block lg:hidden"
+            onclick="window.open('/CV/CV.pdf', '_blank')"
+            >
+            Visualizza CV
+            </button>
+
+            <button
+            class="w-full bg-orange duration-200 font-display hover:bg-blacktext-white lg:w-auto px-6 py-4 sm:rounded-full text-black hover:text-white text-center text-xs uppercase"
+            onclick="
+            const link = document.createElement('a'); 
+            link.href = '/CV/CV.pdf'; 
+            link.download = 'CV.pdf'; 
+            document.body.appendChild(link); 
+            link.click(); document.body.removeChild(link);"
+            >
+            Scarica CV
+            </button>
+
+          </div>
+          <div class="relative w-full hidden lg:block" style="padding-top: 140%;">
+            <iframe
+              class="absolute top-0 left-0 w-full h-full rounded-lg"
+              src="CV/CV.pdf"
+              loading="lazy"
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
   </section>
+  
+  <script>
+    function downloadPDF(url: string): void {
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = '/CV/CV.pdf';
+        link.click();
+    }
+  </script>
